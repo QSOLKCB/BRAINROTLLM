@@ -1,5 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import { spawnSync } from 'node:child_process';
+import { readFileSync } from 'node:fs';
 import {
   VOCAB,
   generateBrainrot,
@@ -78,4 +80,15 @@ test('v0.2 expands every response category to sixteen deterministic choices', ()
   assert.ok(VOCAB.subjects.includes('THE 7 PERCENT RECOVERY TEAM'));
   assert.ok(VOCAB.verdicts.includes('CONFIDENCE IS NOT A SCORE'));
   assert.ok(VOCAB.confidences.includes('AUDITED BY COMMODORE 64'));
+});
+
+test('CLI banner matches package release version', () => {
+  const pkg = JSON.parse(readFileSync(new URL('../package.json', import.meta.url), 'utf8'));
+  const cli = spawnSync(process.execPath, [
+    new URL('../cli.mjs', import.meta.url).pathname,
+    'version audit'
+  ], { encoding: 'utf8' });
+
+  assert.equal(cli.status, 0, cli.stderr);
+  assert.match(cli.stdout, new RegExp(`BRAINROTLLM V${pkg.version.replaceAll('.', '\\.')}`));
 });
