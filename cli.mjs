@@ -12,7 +12,7 @@ if (!prompt) {
 
 const result = generateBrainrot(prompt, { greedy });
 console.log('============================================');
-console.log(' BRAINROTLLM V0.1.0 (DETERMINISTIC BUILD)');
+console.log(' BRAINROTLLM V0.2.0 (DETERMINISTIC BUILD)');
 console.log(' CONTEXT WINDOW: 64K-ish   PARAMETERS: 0');
 console.log('============================================');
 console.log(`PROMPT HASH = ${result.hash}`);
