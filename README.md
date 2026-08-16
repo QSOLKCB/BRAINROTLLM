@@ -6,13 +6,11 @@ BRAINROTLLM is a deterministic parody “LLM” implemented as an inspectable pr
 
 The joke is the architecture. The useful bit is reproducibility.
 
-## GitHub Pages
+## Live demo
 
-The `docs/` directory contains a zero-backend browser version. It runs locally in the page: no inference API, no server, no tokens, no account required.
+### 👉 [OPEN BRAINROTLLM ON GITHUB PAGES](https://qsolkcb.github.io/BRAINROTLLM/)
 
-After the Pages workflow is enabled/deployed on `main`, the expected project URL is:
-
-`https://qsolkcb.github.io/BRAINROTLLM/`
+The `docs/` directory contains the zero-backend browser version. It runs locally in the page: no inference API, no server, no tokens, no account required.
 
 ## Quick start
 
@@ -61,10 +59,16 @@ The canonical algorithm is documented in [DETERMINISM.md](DETERMINISM.md). `READ
 
 **Greedy brain death** always takes vocabulary slot zero and suppresses the deliberately labeled hallucination gag. It is what happens when temperature reaches absolute corporate zero.
 
+## v0.2 response expansion
+
+The vocabulary now has **16 choices in each of six response categories**, giving **16,777,216 base combinations** before the prompt echo and optional hallucination gag are counted. Same prompt + same version still gives the same nonsense.
+
+New material includes the Token Accountant, C64 Headmaster, Math Book Open, black-market token audits, Atari rematches, confidence-score disciplinary hearings, and the 7% Recovery Team.
+
 ## Example
 
 ```text
-BRAINROTLLM V0.1.0
+BRAINROTLLM V0.2.0
 PROMPT > why you no study? you only get 93%
 
 HASH        = deterministic
