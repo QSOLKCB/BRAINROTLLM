@@ -1,4 +1,5 @@
 import { generateBrainrot } from './brainrot.js';
+import { decodePromptFragment, encodePromptFragment } from './url.js';
 
 const form = document.querySelector('#prompt-form');
 const prompt = document.querySelector('#prompt');
@@ -18,7 +19,7 @@ function run() {
     `MISSING ${result.missing}%`,
     `ATTENTION ${result.attention.join('')}`
   ].join('  |  ');
-  history.replaceState(null, '', `#${encodeURIComponent(result.prompt)}`);
+  history.replaceState(null, '', `#${encodePromptFragment(result.prompt)}`);
 }
 
 form.addEventListener('submit', (event) => {
@@ -35,6 +36,5 @@ for (const button of examples) {
   });
 }
 
-const initial = decodeURIComponent(location.hash.slice(1) || 'why you no study? you only get 93%');
-prompt.value = initial;
+prompt.value = decodePromptFragment(location.hash);
 run();
