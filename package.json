@@ -1,0 +1,12 @@
+{
+  "name": "brainrotllm",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "A deterministic pseudo-LLM that converts prompts into reproducible brainrot.",
+  "scripts": {
+    "test": "node --test test/*.test.mjs",
+    "start": "node cli.mjs"
+  },
+  "license": "Apache-2.0"
+}
