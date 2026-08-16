@@ -68,3 +68,14 @@ test('nested vocabulary tables are immutable', () => {
   assert.throws(() => { VOCAB.subjects[0] = 'MUTATED'; }, TypeError);
   assert.equal(VOCAB.subjects[0], 'THE LOBSTER QUEEN');
 });
+
+test('v0.2 expands every response category to sixteen deterministic choices', () => {
+  for (const [name, table] of Object.entries(VOCAB)) {
+    assert.equal(table.length, 16, `${name} should contain 16 choices`);
+    assert.equal(Object.isFrozen(table), true, `${name} should remain immutable`);
+  }
+  assert.ok(VOCAB.fillers.includes('MATH BOOK OPEN'));
+  assert.ok(VOCAB.subjects.includes('THE 7 PERCENT RECOVERY TEAM'));
+  assert.ok(VOCAB.verdicts.includes('CONFIDENCE IS NOT A SCORE'));
+  assert.ok(VOCAB.confidences.includes('AUDITED BY COMMODORE 64'));
+});
