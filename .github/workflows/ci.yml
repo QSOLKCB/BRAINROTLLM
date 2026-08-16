@@ -1,0 +1,42 @@
+name: deterministic-ci
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  javascript:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm test
+      - name: Reproducibility smoke test
+        run: |
+          node cli.mjs "why you no study?" > /tmp/a.txt
+          node cli.mjs "why you no study?" > /tmp/b.txt
+          diff -u /tmp/a.txt /tmp/b.txt
+
+  cobol:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install GnuCOBOL
+        run: sudo apt-get update && sudo apt-get install -y gnucobol
+      - name: Compile COBOL
+        run: make cobol
+      - name: Deterministic COBOL smoke test
+        run: |
+          printf '%s\n' 'why you no study?' | ./bin/brainrot-llm > /tmp/a.txt
+          printf '%s\n' 'why you no study?' | ./bin/brainrot-llm > /tmp/b.txt
+          diff -u /tmp/a.txt /tmp/b.txt
+      - name: COBOL prompt normalization regression
+        run: |
+          printf '%s\n' 'hello' | ./bin/brainrot-llm > /tmp/plain.txt
+          printf '%s\n' '  hello  ' | ./bin/brainrot-llm > /tmp/padded.txt
+          diff -u /tmp/plain.txt /tmp/padded.txt

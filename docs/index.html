@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="BRAINROTLLM: deterministic pseudo-LLM, zero parameters, 100% reproducible nonsense.">
+  <title>BRAINROTLLM // 93% PERFORMANCE</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <main class="shell">
+    <header>
+      <div class="kicker">QSOLKCB // DETERMINISTIC COMPUTE APPLIANCE</div>
+      <h1>BRAINROT<span>LLM</span></h1>
+      <p class="lede">0 parameters. 0 training epochs. 95% confidence. 93% score. Nobody knows where the other 7% went.</p>
+    </header>
+
+    <section class="terminal" aria-label="BrainRotLLM terminal">
+      <div class="statusbar">
+        <span>READY.</span>
+        <span>CONTEXT: 64K-ish</span>
+        <span>MODEL: COBOL-adjacent</span>
+      </div>
+
+      <form id="prompt-form">
+        <label for="prompt">PROMPT &gt;</label>
+        <textarea id="prompt" maxlength="80" rows="3" spellcheck="false"></textarea>
+        <div class="controls">
+          <button type="submit">RUN</button>
+          <label class="toggle"><input id="greedy" type="checkbox"> GREEDY BRAIN DEATH</label>
+        </div>
+      </form>
+
+      <div class="examples" aria-label="Example prompts">
+        <button data-prompt="why you no study? you only get 93%">WHY YOU NO STUDY?</button>
+        <button data-prompt="where did other 7% go?">FIND OTHER 7%</button>
+        <button data-prompt="Atari 2600 beat GPT at chess">ATARI CHESS AUDIT</button>
+      </div>
+
+      <div class="screen">
+        <div class="label">OUTPUT</div>
+        <pre id="output"></pre>
+        <div id="metadata" class="metadata"></div>
+      </div>
+    </section>
+
+    <section class="manifesto">
+      <h2>WHAT IS THIS?</h2>
+      <p>A deterministic parody language model. It hashes the prompt, advances a fixed integer PRNG, selects from fixed vocabulary tables, and produces the same brainrot for the same input. There is no network call and no hidden model.</p>
+      <div class="grid">
+        <article><strong>DETERMINISTIC</strong><span>Same input → same output.</span></article>
+        <article><strong>INSPECTABLE</strong><span>The whole “model” fits in source code.</span></article>
+        <article><strong>CALIBRATED*</strong><span>*Confidence is legally distinct from competence.</span></article>
+      </div>
+    </section>
+
+    <footer>
+      <span>APACHE-2.0</span>
+      <a href="https://github.com/QSOLKCB/BRAINROTLLM">SOURCE CODE</a>
+      <span>NO TOKENS WERE PURCHASED ON THE BLACK MARKET</span>
+    </footer>
+  </main>
+  <script type="module" src="./app.js"></script>
+</body>
+</html>
